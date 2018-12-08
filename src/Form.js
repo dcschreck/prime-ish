@@ -8,7 +8,6 @@ export default class Form extends React.Component {
 
   handleChange = (e) => {
     const newText = e.target.value;
-    console.log(newText);
     this.setState({text: newText});
   }
 
