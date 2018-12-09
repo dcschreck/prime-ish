@@ -14,7 +14,7 @@ export default class Form extends React.Component {
   handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       this.props.submit(this.state.text);
-      this.setState({ text: '' });
+      this.setState({ text: ' ' });
     }
   }
 
@@ -26,6 +26,7 @@ export default class Form extends React.Component {
         onKeyDown={this.handleKeyDown}
         label="Three digit number please"
         margin="normal"
+        value={text}
         fullWidth
       />
     );

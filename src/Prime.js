@@ -38,6 +38,9 @@ class Prime extends Component {
 
   render() {
     const {data: {loading, primeNumbers}} = this.props;
+    if (loading) {
+      return null;
+    }
     return (
       <div className="r1c2" >
         {this.checker() || "Too Bad"}
