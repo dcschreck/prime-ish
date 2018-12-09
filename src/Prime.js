@@ -19,8 +19,9 @@ const UpdateMutuation = gql`
 `;
 
 class Prime extends Component {
-  checker = (checked, primes) => {
-    let recentChecked = (checked[checked.length - 1].text);
+  checker = (primes) => {
+    let nums = this.props.checkedNumbersFromParent;
+    let recentChecked = (nums[nums.length - 1].text);
     let recentCheckedRegExp = new RegExp(recentChecked);
     for (var i in primes) {
       let count = 0;
@@ -30,6 +31,7 @@ class Prime extends Component {
         break;
       }
     }
+    return primes;
   }
 
   updatePrimeNumber = async (primeNumber) => {
@@ -55,9 +57,7 @@ class Prime extends Component {
 
   render() {
     const {data: {loading, primeNumbers}} = this.props;
-    let nums = this.props.checkedNumbersFromParent;
-    this.checker(nums, primeNumbers)
-    console.log(this.props);
+    this.checker(primeNumbers)
     return (
       <div>
 

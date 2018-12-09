@@ -50,11 +50,10 @@ class App extends Component {
 
   render() {
     const {data: {loading, checkedNumbers}} = this.props;
-
     if (loading) {
       return null;
     }
-    console.log(this.props);
+
     return (
       <div>
         <Form submit={this.createCheckedNumber}/>
