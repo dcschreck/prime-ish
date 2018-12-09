@@ -57,8 +57,8 @@ class App extends Component {
     return (
       <div>
         <Form submit={this.createCheckedNumber}/>
-        <div> {checkedNumbers.map(checkedNumber => (
-          <div key={`${checkedNumber.id}`}>{checkedNumber.text}</div>))}
+        <div className="wrapper"> {checkedNumbers.map(checkedNumber => (
+          <div className="r1c1" key={`${checkedNumber.id}`}>{checkedNumber.text}</div>))}
           <Prime checkedNumbersFromParent={checkedNumbers}/>
         </div>
       </div>
