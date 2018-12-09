@@ -54,7 +54,7 @@ class App extends Component {
     if (loading) {
       return null;
     }
-
+    console.log(this.props);
     return (
       <div>
         <Form submit={this.createCheckedNumber}/>

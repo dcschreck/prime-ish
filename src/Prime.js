@@ -20,10 +20,13 @@ const UpdateMutuation = gql`
 
 class Prime extends Component {
   checker = (checked, primes) => {
-    let recentChecked = new RegExp(checked[checked.length - 1].text);
+    let recentChecked = (checked[checked.length - 1].text);
+    let recentCheckedRegExp = new RegExp(recentChecked);
     for (var i in primes) {
-      if (primes[i].text.search(recentChecked) > 0 && primes[i].match != true) {
+      let count = 0;
+      if (primes[i].text.search(recentCheckedRegExp) >= 0 && count < 1) {
         this.updatePrimeNumber(primes[i]);
+        count = count + 1;
         break;
       }
     }
@@ -33,7 +36,7 @@ class Prime extends Component {
     await this.props.updatePrimeNumber({
       variables: {
         id: primeNumber.id,
-        match: !primeNumber.match
+        match: primeNumber.match
       },
       update: store => {
         const data = store.readQuery({ query: PrimeNumbersQuery });
@@ -41,7 +44,7 @@ class Prime extends Component {
           x =>
             x.id === primeNumber.id
             ? {
-                ...primeNumber, match: !primeNumber.match
+                ...primeNumber, match: true
               }
             : x
         );
@@ -54,6 +57,7 @@ class Prime extends Component {
     const {data: {loading, primeNumbers}} = this.props;
     let nums = this.props.checkedNumbersFromParent;
     this.checker(nums, primeNumbers)
+    console.log(this.props);
     return (
       <div>
 
