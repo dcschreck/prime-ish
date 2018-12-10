@@ -40,7 +40,7 @@ class App extends Component {
       variables: {
         text
       },
-      update: (store, { data: {createCheckedNumber } }) => {
+      update: (store, { data: {createCheckedNumber} }) => {
         const data = store.readQuery({ query: CheckedNumbersQuery });
         data.checkedNumbers.push(createCheckedNumber);
         store.writeQuery({ query: CheckedNumbersQuery, data });
@@ -55,9 +55,10 @@ class App extends Component {
     }
 
     return (
-      <div>
-        <Form submit={this.createCheckedNumber}/>
-        <div className="wrapper"> {checkedNumbers.map(checkedNumber => (
+      <div className="body">
+        <h1 className="title">Prime-ish</h1>
+        <Form className="inputField" submit={this.createCheckedNumber}/>
+        <div className="wrapper"> Checked Numbers {checkedNumbers.map(checkedNumber => (
           <div className="r1c1" key={`${checkedNumber.id}`}>{checkedNumber.text}</div>))}
           <Prime checkedNumbersFromParent={checkedNumbers}/>
         </div>

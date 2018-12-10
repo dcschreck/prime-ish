@@ -12,9 +12,15 @@ export default class Form extends React.Component {
   }
 
   handleKeyDown = (e) => {
+    let val = this.state.text.replace(/\s/g, "");
     if (e.key === 'Enter') {
-      this.props.submit(this.state.text);
-      this.setState({ text: ' ' });
+      if (val.length === 3 && !isNaN(val)) {
+        this.props.submit(val);
+        this.setState({ text: '' });
+      } else {
+        alert("Oops! You need to enter 3 numbers!")
+        this.setState({ text: '' });
+      }
     }
   }
 
@@ -24,10 +30,13 @@ export default class Form extends React.Component {
       <TextField
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
-        label="Three digit number please"
-        margin="normal"
-        value={text}
+        id="outlined-full-width"
+        label="Enter 3 digit number please"
+        style={{ margin: 8 }}
         fullWidth
+        margin="normal"
+        variant="outlined"
+        value={text}
       />
     );
   }

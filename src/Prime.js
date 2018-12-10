@@ -7,14 +7,22 @@ const PrimeNumbersQuery = gql`
   primeNumbers {
     id
     text
-    match
   }
 }
 `;
 
-const UpdateMutuation = gql`
-  mutation($id: ID!, $match: Boolean!) {
-    updatePrimeNumber(id: $id, match: $match)
+const CheckedNumbersQuery =  gql`
+{
+  checkedNumbers {
+    id
+    text
+  }
+}
+`;
+
+const UpdateCheckedNumber = gql`
+  mutation($id: ID!) {
+    updateCheckedNumber(id: $id)
   }
 `;
 
@@ -23,8 +31,8 @@ class Prime extends Component {
   checker = () => {
     let primes = (this.props.data.primeNumbers)
     let nums = this.props.checkedNumbersFromParent;
-    let recentCheckedRegExp = new RegExp(nums[nums.length - 1].text);
-
+    let recentCheckedNumber = (nums[nums.length - 1].text);
+    let recentCheckedRegExp = new RegExp(recentCheckedNumber);
     for (var i in primes) {
       if (primes[i].text.search(recentCheckedRegExp) >= 0) {
         return (
@@ -38,11 +46,12 @@ class Prime extends Component {
 
   render() {
     const {data: {loading, primeNumbers}} = this.props;
+    this.checker();
     if (loading) {
       return null;
     }
     return (
-      <div className="r1c2" >
+      <div className="r1c2">Did You Get Prime-ish?
         {this.checker() || "Too Bad"}
       </div>
     );
@@ -50,6 +59,6 @@ class Prime extends Component {
 }
 
 export default compose(
-  graphql(UpdateMutuation, {name: 'updatePrimeNumber'}),
+  graphql(UpdateCheckedNumber, {name: 'updateCheckedNumber'}),
   graphql(PrimeNumbersQuery)
 )(Prime);
