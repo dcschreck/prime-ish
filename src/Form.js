@@ -18,7 +18,7 @@ export default class Form extends React.Component {
         this.props.submit(val);
         this.setState({ text: '' });
       } else {
-        alert("Oops! You need to enter 3 numbers!")
+        alert("Oops! You need to enter 3 numbers!");
         this.setState({ text: '' });
       }
     }
