@@ -28,11 +28,11 @@ export default class Form extends React.Component {
     const { text } = this.state;
     return (
       <TextField
+        className="inputField"
         onChange={this.handleChange}
         onKeyDown={this.handleKeyDown}
-        id="outlined-full-width"
-        label="Enter 3 digit number please"
-        style={{ margin: 8 }}
+        id="outlined-bare"
+        placeholder="Enter 3 digit number please"
         fullWidth
         margin="normal"
         variant="outlined"

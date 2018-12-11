@@ -1,67 +1,140 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-html, body {
-  padding: 0% 10%;
-  justify-content: center;
-}
-
-.title {
-  color: black;
-  text-align: center;
-  font-size: 80px;
-}
-
 .wrapper {
   display: grid;
-  height: 100%;
-  grid-gap: 5px;
-  grid-template-columns: 200px;
+  grid-gap: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  grid-template-columns: auto;
   grid-template-rows: auto;
-  justify-content: center;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-left: 20%;
-  margin-right: 20%;
-  font-family: sans-serif;
+  grid-template-areas:
+    "title"
+    "left-column"
+    "input-field"
+    "output"
+}
+.title {
+  color: #61dafb;
+  text-align: center;
+  font-size: 80px;
+  grid-area: title;
+}
+
+p {
+  grid-area: left-column;
+  color: white;
   font-size: 20px;
-  padding: 5px;
+  font-weight: bold;
+}
+
+.inputField {
+  grid-area: input-field;
+}
+
+.MuiInputBase-root-18 {
+  background: white;
+  border-radius: 10px;
+}
+
+.output {
+  grid-area: output;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  border: 1px solid #61dafb;
+  border-radius: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-family: sans-serif;
+  padding: 20px;
+  background: #282c34;
+  text-align: center;
+}
+h4 {
+  font-size: 15px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: white;
 }
 .r1c1 {
   grid-column: 1/2;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+.prime-list{
+  grid-column: 2/3;
+  grid-row: 1/2;
 }
 .r1c2 {
   grid-column: 2/3;
-  grid-row: 1/3;
+  grid-row: 2/3;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (min-width: 700px) {
+.wrapper {
+    margin-left: 90px;
+    margin-right: 90px;
+		grid-template-columns: auto;
+		grid-template-rows: auto;
+		grid-template-areas:
+    "title title"
+    "left-column left-column"
+    "input-field input-field"
+    "output output"
   }
-  to {
-    transform: rotate(360deg);
+  .title {
+    text-align: center;
+  }
+  .output {
+    text-align: center;
+  }
+  p {
+    grid-area: left-column;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+  }
+  h4 {
+    font-size: 25px;
+  }
+  .r1c1 {
+    font-size: 20px;
+  }
+  .r1c2 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1330px) {
+.wrapper {
+    margin-left: 90px;
+    margin-top: 50px;
+    margin-right: 50px;
+    grid-template-columns: repeat(3, 300px);
+    grid-template-rows: auto;
+    grid-template-areas:
+    "title title title title"
+    "left-column left-column input-field input-field"
+    "left-column left-column output output";
+  }
+  .title {
+    text-align: left;
+  }
+  p {
+    grid-area: left-column;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  h4 {
+    font-size: 22px;
+  }
+  .r1c1 {
+    font-size: 19px;
+  }
+  .r1c2 {
+    font-size: 19px;
   }
 }

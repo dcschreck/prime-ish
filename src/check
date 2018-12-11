@@ -1,0 +1,28 @@
+for (var i in primes) {
+  if (primes[i].text.search(recentCheckedRegExp) >= 0) {
+    return (
+      <div>
+        <div>{primes[i].text}</div>
+      </div>
+    )
+  }
+}
+
+
+<div className="r1c2">Did You Get Prime-ish?
+  {this.checker() || "Too Bad"}
+</div>
+
+
+<TextField
+  className="inputField"
+  onChange={this.handleChange}
+  onKeyDown={this.handleKeyDown}
+  id="outlined-full-width"
+  label="Enter 3 digit number please"
+  style={{ margin: 8 }}
+  fullWidth
+  margin="normal"
+  variant="outlined"
+  value={text}
+/>

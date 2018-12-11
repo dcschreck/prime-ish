@@ -20,6 +20,7 @@ const CheckedNumbersQuery =  gql`
   checkedNumbers {
     id
     text
+    matchingPrime
   }
 }
 `;
@@ -29,6 +30,7 @@ const CreateCheckedNumberMutation = gql`
     createCheckedNumber(text: $text) {
       id
       text
+      matchingPrime
     }
   }
 `;
@@ -55,11 +57,15 @@ class App extends Component {
     }
 
     return (
-      <div className="body">
-        <h1 className="title">Prime-ish</h1>
-        <Form className="inputField" submit={this.createCheckedNumber}/>
-        <div className="wrapper"> Checked Numbers {checkedNumbers.map(checkedNumber => (
-          <div className="r1c1" key={`${checkedNumber.id}`}>{checkedNumber.text}</div>))}
+      <div className="wrapper">
+        <h1 className="title">Prime/ish</h1>
+        <p>Ever wonder if a specific 3-digit number made up one of the first 10,000 prime numbers? Well, now you can get your answer! Prime-ish will tell which prime number your entry belongs to. Type in your number, hit Enter, and get your answer!</p>
+        <Form submit={this.createCheckedNumber}/>
+        <div className="output">
+          <h4>Checked Numbers</h4>
+          {checkedNumbers.map(checkedNumber => (
+            <div className="r1c1" key={`${checkedNumber.id}`}>{checkedNumber.text}</div>))}
+          <h4 className="prime-list">Is it Prime/ish???</h4>
           <Prime checkedNumbersFromParent={checkedNumbers}/>
         </div>
       </div>
