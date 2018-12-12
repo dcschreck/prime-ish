@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import gql from "graphql-tag";
 import { graphql, compose } from 'react-apollo';
-import logo from './logo.svg';
 import './App.css';
 import Form from './Form';
 import Prime from './Prime';
@@ -52,7 +51,7 @@ class App extends Component {
 
   render() {
     const {data: {loading, checkedNumbers}} = this.props;
-    console.log(checkedNumbers);
+
     if (loading) {
       return null;
     }
@@ -60,7 +59,7 @@ class App extends Component {
     return (
       <div className="wrapper">
         <h1 className="title">Prime/ish</h1>
-        <p>Ever wonder if a specific 3-digit number made up one of the first 10,000 prime numbers? Well, now you can get your answer! Prime-ish will tell which prime number your entry belongs to. Type in your number, hit Enter, and get your answer!</p>
+        <p>Ever wonder if a specific 3-digit number made up one of the first 10,000 prime numbers? Well, now you can get your answer! Prime-ish will tell if your entry belongs to a prime number in a jiff! Type in your number, hit Enter, and get your answer!</p>
         <Form submit={this.createCheckedNumber}/>
         <div className="output">
           <h4>Checked Numbers</h4>

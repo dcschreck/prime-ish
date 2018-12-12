@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import gql from "graphql-tag";
-import { Mutation } from 'react-apollo';
+// import { Mutation } from 'react-apollo';
 import { graphql, compose } from 'react-apollo';
 
 const PrimeNumbersQuery = gql`
@@ -12,15 +12,15 @@ const PrimeNumbersQuery = gql`
 }
 `;
 
-const CheckedNumbersQuery =  gql`
-{
-  checkedNumbers {
-    id
-    text
-    matchingPrime
-  }
-}
-`;
+// const CheckedNumbersQuery =  gql`
+// {
+//   checkedNumbers {
+//     id
+//     text
+//     matchingPrime
+//   }
+// }
+// `;
 
 const UpdateCheckedNumber = gql`
   mutation($id: ID!) {
@@ -57,7 +57,7 @@ class Prime extends Component {
     } else {
       let primes = (this.props.data.primeNumbers)
       let nums = this.props.checkedNumbersFromParent;
-      let recentCheckedObject = (nums[0]);
+      // let recentCheckedObject = (nums[0]);
       let recentCheckedNumber = (nums[0].text);
       let recentCheckedRegExp = new RegExp(recentCheckedNumber);
       for (var i in primes) {
