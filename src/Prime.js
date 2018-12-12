@@ -55,11 +55,31 @@ class Prime extends Component {
         <div></div>
       )
     } else {
+      let dblZeroNumbers = ["002", "003", "005", "007", "009"];
+      let singleZeroNumbers = ["011", "013", "017", "019", "023", "029", "031", "037", "041", "043", "047", "053", "059", "061", "067", "071", "073", "079", "083", "089", "097"];
       let primes = (this.props.data.primeNumbers)
       let nums = this.props.checkedNumbersFromParent;
       // let recentCheckedObject = (nums[0]);
       let recentCheckedNumber = (nums[0].text);
       let recentCheckedRegExp = new RegExp(recentCheckedNumber);
+      for (var x in dblZeroNumbers) {
+        if (dblZeroNumbers[x].search(recentCheckedRegExp) >= 0){
+          return (
+            <div>
+              <div>{parseInt(dblZeroNumbers[x])}</div>
+            </div>
+          )
+        }
+      }
+      for (var y in singleZeroNumbers) {
+        if (singleZeroNumbers[y].search(recentCheckedRegExp) >= 0){
+          return (
+            <div>
+              <div>{parseInt(singleZeroNumbers[y])}</div>
+            </div>
+          )
+        }
+      }
       for (var i in primes) {
         if (primes[i].text.search(recentCheckedRegExp) >= 0) {
           return (
