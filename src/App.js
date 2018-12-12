@@ -44,7 +44,7 @@ class App extends Component {
       },
       update: (store, { data: {createCheckedNumber} }) => {
         const data = store.readQuery({ query: CheckedNumbersQuery });
-        data.checkedNumbers.push(createCheckedNumber);
+        data.checkedNumbers.unshift(createCheckedNumber);
         store.writeQuery({ query: CheckedNumbersQuery, data });
       }
     });
@@ -52,6 +52,7 @@ class App extends Component {
 
   render() {
     const {data: {loading, checkedNumbers}} = this.props;
+    console.log(checkedNumbers);
     if (loading) {
       return null;
     }
@@ -65,7 +66,7 @@ class App extends Component {
           <h4>Checked Numbers</h4>
           {checkedNumbers.map(checkedNumber => (
             <div className="r1c1" key={`${checkedNumber.id}`}>{checkedNumber.text}</div>))}
-          <h4 className="prime-list">Is it Prime/ish???</h4>
+          <h4 className="prime-list">Prime/ish Result</h4>
           <Prime checkedNumbersFromParent={checkedNumbers}/>
         </div>
       </div>

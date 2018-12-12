@@ -50,18 +50,24 @@ class Prime extends Component {
   // }
 
   checker = () => {
-    let primes = (this.props.data.primeNumbers)
-    let nums = this.props.checkedNumbersFromParent;
-    let recentCheckedObject = (nums[nums.length - 1]);
-    let recentCheckedNumber = (nums[nums.length - 1].text);
-    let recentCheckedRegExp = new RegExp(recentCheckedNumber);
-    for (var i in primes) {
-      if (primes[i].text.search(recentCheckedRegExp) >= 0) {
-        return (
-          <div>
-            <div>{primes[i].text}</div>
-          </div>
-        )
+    if (this.props.checkedNumbersFromParent.length < 1) {
+      return (
+        <div></div>
+      )
+    } else {
+      let primes = (this.props.data.primeNumbers)
+      let nums = this.props.checkedNumbersFromParent;
+      let recentCheckedObject = (nums[0]);
+      let recentCheckedNumber = (nums[0].text);
+      let recentCheckedRegExp = new RegExp(recentCheckedNumber);
+      for (var i in primes) {
+        if (primes[i].text.search(recentCheckedRegExp) >= 0) {
+          return (
+            <div>
+              <div>{primes[i].text}</div>
+            </div>
+          )
+        }
       }
     }
   }
