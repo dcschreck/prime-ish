@@ -57,7 +57,7 @@ h4 {
 }
 .r1c1 {
   grid-column: 1/2;
-  font-size: 14px;
+  font-size: 18px;
   color: white;
   font-weight: bold;
 }
@@ -68,7 +68,7 @@ h4 {
 .r1c2 {
   grid-column: 2/3;
   grid-row: 2/3;
-  font-size: 14px;
+  font-size: 18px;
   color: white;
   font-weight: bold;
 }
