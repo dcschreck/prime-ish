@@ -22,11 +22,11 @@ const PrimeNumbersQuery = gql`
 // }
 // `;
 
-const UpdateCheckedNumber = gql`
-  mutation($id: ID!) {
-    updateCheckedNumber(id: $id)
-  }
-`;
+// const UpdateCheckedNumber = gql`
+//   mutation($id: ID!) {
+//     updateCheckedNumber(id: $id)
+//   }
+// `;
 
 class Prime extends Component {
   // updateCheckedNumber = async (checkedNumber) => {
@@ -87,6 +87,6 @@ class Prime extends Component {
 }
 
 export default compose(
-  graphql(UpdateCheckedNumber, {name: 'updateCheckedNumber'}),
+  // graphql(UpdateCheckedNumber, {name: 'updateCheckedNumber'}),
   graphql(PrimeNumbersQuery)
 )(Prime);
