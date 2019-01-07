@@ -66,7 +66,7 @@ class App extends Component {
           {checkedNumbers.map(checkedNumber => (
             <div className="r1c1" key={`${checkedNumber.id}`}>{checkedNumber.text}</div>))}
           <h4 className="prime-list">Prime/ish Result</h4>
-          <Prime checkedNumbersFromParent={checkedNumbers}/>
+          <Prime checkedNumbers={checkedNumbers}/>
         </div>
       </div>
     );

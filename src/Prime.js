@@ -13,7 +13,7 @@ const PrimeNumbersQuery = gql`
 
 class Prime extends Component {
   checker = () => {
-    if (this.props.checkedNumbersFromParent.length < 1) {
+    if (this.props.checkedNumbers.length < 1) {
       return (
         <div></div>
       )
@@ -21,7 +21,7 @@ class Prime extends Component {
       let dblZeroNumbers = ["002", "003", "005", "007", "009"];
       let singleZeroNumbers = ["011", "013", "017", "019", "023", "029", "031", "037", "041", "043", "047", "053", "059", "061", "067", "071", "073", "079", "083", "089", "097"];
       let primes = (this.props.data.primeNumbers)
-      let nums = this.props.checkedNumbersFromParent;
+      let nums = this.props.checkedNumbers;
       let recentCheckedNumber = (nums[0].text);
       let recentCheckedRegExp = new RegExp(recentCheckedNumber);
       for (var x in dblZeroNumbers) {
